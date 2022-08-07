@@ -1,0 +1,5 @@
+pystac_client
+rioxarray
+pyproj
+matplotlib
+numpy
