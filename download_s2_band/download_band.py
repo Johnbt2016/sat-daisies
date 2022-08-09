@@ -41,6 +41,16 @@ def prepare_data(execs_ids):
     
     data_array = [e.value for _ in execs]
 
+    target_shape = data_array[0].shape
+    for k in [4, 5]:
+        data = data_array[k]
+        data = np.repeat(data, 2, axis = 1)
+        data = np.repeat(data, 2, axis = 0)
+        cut_row = data.shape[0] - target_shape[0]
+        cut_col = data.shape[1] - target_shape[1]
+        data = data[:-cut_row,:-cut_col]
+        data_array[k] = data
+
     data_array = np.array(data_array)
     data_array = data_array.transpose().reshape((data_array.shape[1], data_array.shape[2], data_array.shape[0]))
 
