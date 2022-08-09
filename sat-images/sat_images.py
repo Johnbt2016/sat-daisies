@@ -3,6 +3,9 @@ import rioxarray
 import pyproj
 import matplotlib.pyplot as plt
 import numpy as np
+import pydaisi as pyd
+sentinel_s2_l2a_cogs = pyd.Daisi("laiglejm/Sentinel S2 l2a COGS")
+
 
 api_url = "https://earth-search.aws.element84.com/v0"
 client = Client.open(api_url)
@@ -85,8 +88,8 @@ if __name__ == "__main__":
                 datetime=f"{year}-10-01/{year}-12-30"
             print(datetime)
             try:
-                item = get_sat_images(datetime, lat, lon)
-                render_images(item, lat, lon, radius=8000, attribute_to_display = "visual")
+                item = sentinel_s2_l2a_cogs.get_sat_images(datetime, lat, lon).value
+                render_images(item, lat, lon, radius=8000, attribute_to_display = "SCL")
             except Exception as e:
                 print(e)
                 print(f"Nothing found for year {year} and month {month}")

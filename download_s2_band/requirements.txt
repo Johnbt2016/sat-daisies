@@ -1,0 +1,7 @@
+numpy
+rioxarray
+pyproj
+rasterio
+pydaisi
+pystac
+pystac-client
