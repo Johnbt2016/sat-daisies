@@ -15,5 +15,7 @@ def st_ui():
 
     res = fun3()
 
+    st.write(res)
+
 if __name__ == "__main__":
     st_ui()
